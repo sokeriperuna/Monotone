@@ -17,7 +17,9 @@ public class PlayerEntity : MonoBehaviour {
 
     public void Move(float hInput)
     {
-        rb.MovePosition(rb.position + Vector2.right * hInput * movementSpeed * Time.deltaTime);
+        //rb.MovePosition(rb.position + Vector2.right * hInput * movementSpeed * Time.fixedDeltaTime);
+        transform.position = rb.position + Vector2.right * hInput * movementSpeed * Time.fixedDeltaTime;
+            
     }
 
     public void Jump()
@@ -28,6 +30,7 @@ public class PlayerEntity : MonoBehaviour {
     public void StopVerticalMomemtum()
     {
         Vector2 v = rb.velocity;
-        rb.velocity = new Vector2(v.x, 0f);
+        if(v.y > 0f)
+            rb.velocity = new Vector2(v.x, -1.5f);
     }
 }
