@@ -9,8 +9,8 @@ public class PlayerController : MonoBehaviour {
     private float hInput;
     private float jumpStopTime;
 
-    private bool jumping = false;
-    private bool verticalMomentumStopped = false;
+    public bool jumping = false;
+    public bool verticalMomentumStopped = false;
 
     public float jumpStopInterval;
 
@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour {
         if (hInput != 0)
             playerEntity.Move(hInput);
 
-        if (!jumping && Input.GetKeyDown(KeyCode.Space))
+        if (!jumping && Input.GetKey(KeyCode.Space))
         {
             jumping = true;
             jumpStopTime = jumpStopInterval + Time.time;
