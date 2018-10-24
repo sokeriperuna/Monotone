@@ -9,6 +9,12 @@ public class PlayerEntity : MonoBehaviour {
     public float jumpForce;
     public float movementSpeed;
 
+    public float maxPitch;
+    public float minPitch;
+
+    public AudioSource audio;
+    public AudioClip jumpDef;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -25,6 +31,9 @@ public class PlayerEntity : MonoBehaviour {
     public void Jump()
     {
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+
+        audio.pitch = Random.Range(minPitch, maxPitch);
+        audio.Play();
     }
 
     public void StopVerticalMomemtum()

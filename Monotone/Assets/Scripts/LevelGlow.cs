@@ -12,6 +12,7 @@ public class LevelGlow : MonoBehaviour {
     private float lerpProgress;
 
     public float lerpSpeed = 1f;
+    public float lerpDamp  = 0.5f;
 
     void Awake()
     {
@@ -20,10 +21,9 @@ public class LevelGlow : MonoBehaviour {
 
     void Update()
     {
-        lerpProgress += Time.deltaTime * lerpSpeed;
 
         Color lerpColor = Color.white;
-        lerpColor = Color.Lerp(transparent, defaultColor, Mathf.Sin(Time.time * lerpSpeed));
+        lerpColor = Color.Lerp(transparent, defaultColor, Mathf.Abs(Mathf.Sin(Time.time * lerpSpeed)));
         spriteRenderer.color = lerpColor;
     }
 }
