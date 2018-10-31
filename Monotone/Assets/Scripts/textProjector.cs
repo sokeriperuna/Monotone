@@ -22,7 +22,8 @@ public class textProjector : MonoBehaviour {
 
     public void Project(Text text, Transform target)
     {
-       text.rectTransform.position = Camera.main.WorldToScreenPoint(target.position);
+        if(target != null)
+            text.rectTransform.position = Camera.main.WorldToScreenPoint(target.position);
     }
 
 }
